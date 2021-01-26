@@ -21,9 +21,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@inertiajs/inertia": "^0.8.4",
+    "@inertiajs/inertia-react": "^0.5.2",
     "@nestjs/common": "^7.5.1",
     "@nestjs/core": "^7.5.1",
     "@nestjs/platform-express": "^7.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3"
@@ -48,7 +52,8 @@
     "ts-loader": "^8.0.8",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.0.5"
+    "typescript": "^4.0.5",
+    "vite": "^2.0.0-beta.49"
   },
   "jest": {
     "moduleFileExtensions": [
