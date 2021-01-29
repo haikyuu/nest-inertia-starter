@@ -8,6 +8,7 @@ const SpawnServerPlugin = require('spawn-server-webpack-plugin');
 
 const MarkoPlugin = require('@marko/webpack/plugin').default;
 
+const mode = isDev ? 'development' : 'production';
 const markoPlugin = new MarkoPlugin();
 // const spawnedServer =
 //   isDev &&
@@ -52,7 +53,7 @@ module.exports = [
         },
       ],
     },
-    mode: 'development',
+    mode,
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.marko'],
     },
@@ -71,7 +72,7 @@ module.exports = [
     },
   },
   {
-    mode: 'development',
+    mode,
     bail: true,
     resolve: {
       extensions: ['.js', '.json', '.marko'],

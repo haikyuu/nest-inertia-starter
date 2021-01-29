@@ -7,6 +7,7 @@ import * as express from 'express';
 import { AppModule } from './app.module';
 import { html, version } from './utils/inertia';
 import markoMiddleware from '@marko/express';
+import * as compression from 'compression';
 
 const FileStore = FileStoreC(session);
 
@@ -26,6 +27,7 @@ async function bootstrap() {
   // use vite's connect instance as middleware
   app.use(viteServer.middlewares);
   app.use(markoMiddleware());
+  app.use(compression());
   app.use('/static', express.static('dist/client')); // Serve assets generated from webpack.
 
   app.use(
