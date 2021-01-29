@@ -13,5 +13,5 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "include": ["./web"]
+  "include": ["./web", "vite.config.ts"]
 }

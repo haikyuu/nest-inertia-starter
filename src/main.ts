@@ -6,6 +6,7 @@ import { expressFlash, inertiaExpressAdapter } from 'inertia-node-adapter';
 
 import { AppModule } from './app.module';
 import { html, version } from './utils/inertia';
+import markoMiddleware from '@marko/express';
 
 const FileStore = FileStoreC(session);
 
@@ -24,6 +25,7 @@ async function bootstrap() {
 
   // use vite's connect instance as middleware
   app.use(viteServer.middlewares);
+  app.use(markoMiddleware());
   app.use(
     session({
       secret: 'my-secret',
