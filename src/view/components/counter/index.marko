@@ -1,0 +1,16 @@
+class {
+  onCreate() {
+    this.state = {
+      count: 0,
+    };
+  }
+  increment() {
+    this.state.count++;
+  }
+}
+
+label
+    -- The current count is
+    output -- ${state.count}
+p
+    button.primary on-click("increment") -- +1
