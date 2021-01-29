@@ -3,7 +3,7 @@ import { createServer } from 'vite';
 import * as session from 'express-session';
 import * as FileStoreC from 'session-file-store';
 import { expressFlash, inertiaExpressAdapter } from 'inertia-node-adapter';
-
+import * as express from 'express';
 import { AppModule } from './app.module';
 import { html, version } from './utils/inertia';
 import markoMiddleware from '@marko/express';
@@ -26,6 +26,8 @@ async function bootstrap() {
   // use vite's connect instance as middleware
   app.use(viteServer.middlewares);
   app.use(markoMiddleware());
+  app.use('/static', express.static('dist/client')); // Serve assets generated from webpack.
+
   app.use(
     session({
       secret: 'my-secret',

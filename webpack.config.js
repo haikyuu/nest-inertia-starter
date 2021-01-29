@@ -24,7 +24,7 @@ const babelConfig = {
     compiler: 'modern',
   },
 };
-
+const publicPath = 'static/'; // the path served by express static
 module.exports = [
   {
     entry: ['./src/main.ts'],
@@ -67,6 +67,7 @@ module.exports = [
       path: path.join(__dirname, 'dist'),
       filename: 'server.js',
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+      publicPath,
     },
   },
   {
@@ -101,6 +102,7 @@ module.exports = [
     output: {
       filename: `${filenameTemplate}.js`,
       path: path.join(__dirname, 'dist/client'),
+      publicPath,
     },
   },
 ];
