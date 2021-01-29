@@ -1,6 +1,13 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { createServer } from 'vite';
+import * as session from 'express-session';
+import * as FileStoreC from 'session-file-store';
+import { expressFlash, inertiaExpressAdapter } from 'inertia-node-adapter';
+
+import { AppModule } from './app.module';
+import { html, version } from './utils/inertia';
+
+const FileStore = FileStoreC(session);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +24,23 @@ async function bootstrap() {
 
   // use vite's connect instance as middleware
   app.use(viteServer.middlewares);
+  app.use(
+    session({
+      secret: 'my-secret',
+      resave: false,
+      saveUninitialized: false,
+      store: new FileStore({}),
+    }),
+  );
+  app.use(expressFlash({ initialize: ['success', 'error'] }));
+  app.use(
+    inertiaExpressAdapter({
+      version,
+      flashMessages: (req) => req.flash.flashAll(),
+      html,
+    }),
+  );
+
   await app.listen(3000);
 }
 bootstrap();

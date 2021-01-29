@@ -13,5 +13,5 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "include": ["./src", "./test"]
+  "include": ["./web"]
 }

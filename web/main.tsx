@@ -7,7 +7,7 @@ const el = document.getElementById('app');
 
 render(
   <InertiaApp
-    initialPage={{ component: 'Login', props: {}, url: '/', version: 1 }}
+    initialPage={JSON.parse(el.dataset.page)}
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     resolveComponent={(name) =>
       import(`./Pages/${name}.tsx`).then((module) => module.default)
